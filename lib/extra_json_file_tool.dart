@@ -62,16 +62,11 @@ RegExp _FILE_NAMING_REGEXP = RegExp(r'string_\w+.json');
 Map<String, FileSystemEntity> getValidStringFileMap(files) {
   Map<String, FileSystemEntity> validMap = {};
   for (FileSystemEntity file in files) {
-//    path.basename(file.path);
-//    printInfo('${file.path}');
-
     String fileName = path.basename(file.path);
 
     if (_validateStringFileName(fileName)) {
       String locale = getLocale(fileName);
       validMap[locale] = file;
-//      printInfo('Basename : ${path.basename(file.path)}');
-//      printInfo('locale : ${locale}');
     } else {
       printWarning(
           '$fileName does not match naming pattern [string_{locale}.json]');

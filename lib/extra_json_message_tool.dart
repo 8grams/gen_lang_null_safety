@@ -19,11 +19,8 @@ List<String> getArgs(Iterable<Match> allMatch, String? defaultArg) {
 }
 
 String? normalizedSpecialCharacters(String message) {
-  if (null != message) {
-    String normalizedJson = message.replaceAll(r"\", r"\\");
-    return normalizedJson.replaceAll(r'\\"', r'\\\"');
-  }
-  return null;
+  String normalizedJson = message.replaceAll(r"\", r"\\");
+  return normalizedJson.replaceAll(r'\\"', r'\\\"');
 }
 
 String? normalizedJsonMessage(String? message) {
@@ -44,8 +41,7 @@ String extraArgsFromGender(String? male, String? female, String? other) {
   for (String? plural in plurals) {
     if (null != plural) {
       Iterable<Match> allMatch = ARG_REG_EXP.allMatches(plural);
-      if (null == theMostMatch ||
-          (null != theMostMatch && allMatch.length > theMostMatch.length)) {
+      if ((allMatch.length > theMostMatch.length)) {
         theMostMatch = allMatch;
       }
     }
@@ -71,8 +67,7 @@ String extraArgsFromPlural(String? zero, String? one, String? two, String? few,
   for (String? plural in plurals) {
     if (null != plural) {
       Iterable<Match> allMatch = ARG_REG_EXP.allMatches(plural);
-      if (null == theMostMatch ||
-          (null != theMostMatch && allMatch.length > theMostMatch.length)) {
+      if ((allMatch.length > theMostMatch.length)) {
         theMostMatch = allMatch;
       }
     }
